@@ -60,11 +60,11 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(100))
-    type = db.Column(db.Integer, default=2)
+    type = db.Column(db.Integer, default=1)
     posts = relationship("BlogPost", back_populates="author")
     comments = relationship("Comment", back_populates="comment_author")
 
-#db.create_all()
+db.create_all()
 
 @login_manager.user_loader
 def load_user(user_id):
